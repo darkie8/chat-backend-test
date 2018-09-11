@@ -11,10 +11,10 @@ let crudCallback = (err, result, res, function1) => {
         loggererr = 'getSingleUser'
         msg = ['Failed To get user details', 'No User Found', 'User details found']
     } else if (function1 == 'deleteUser') {
-        loggererr = 'getSingleUser'
+        loggererr = 'deleteUser'
         msg = ['Failed To delete user', 'No User Found', 'User details deleted']
     } else if (function1 == 'editUser') {
-        loggererr = 'getSingleUser'
+        loggererr = 'editUser'
         msg = ['Failed To edit User', 'No User Found', 'User details edited']
     } else {
         return
@@ -29,6 +29,7 @@ let crudCallback = (err, result, res, function1) => {
         logger.error(msg[1], `User Controller: ${loggererr}`, 10)
         let apiResponse = response.generate(true, msg[1], 404, null)
         res.send(apiResponse)
+        
     } else {
         logger.info(msg[2], `User Controller: ${loggererr}`, 10)
         let apiResponse = response.generate(false, msg[2], 200, result)
