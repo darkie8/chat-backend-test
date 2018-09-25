@@ -11,12 +11,14 @@ let generateToken = (data, cb) => {
       iat: Date.now(),
       exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24),
       sub: 'authToken',
-      iss: 'edChat',
+      iss: 'Chat',
       data: data
     }
     let tokenDetails = {
       token: jwt.sign(claims, secretKey),
-      tokenSecret: secretKey
+      tokenSecret: secretKey,
+      userId: 'default',
+      userDetails: 'default'
     }
     cb(null, tokenDetails)
   } catch (err) {

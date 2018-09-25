@@ -2,15 +2,21 @@ const express = require('express');
 const router = express.Router();
 const userController = require("./../../app/controllers/userController");
 const appConfig = require("./../../config/appConfig")
+const auth = require('./../middlewares/auth')
 
 module.exports.setRouter = (app) => {
 
     let baseUrl = `${appConfig.apiVersion}/users`;
 
-    // defining routes.
+
+    app.get(`${baseUrl}/view/all`, auth.isAuthenticated, userController.getAllUser);
 
 
-    // params: firstName, lastName, email, mobileNumber, password
+    // params: userId.
+    app.get(`${baseUrl}/:userId/details`, auth.isAuthenticated, userController.getSingleUser);
+
+    
+    // params: firstName, lastName, email, mobileNumber, password, apiKey.
     app.post(`${baseUrl}/signup`, userController.signUpFunction);
 
     /**
@@ -41,29 +47,14 @@ module.exports.setRouter = (app) => {
         }
     */
 
-    // params: email, password.
     app.post(`${baseUrl}/login`, userController.loginFunction);
 
-    /**
-     * @apiGroup users
-     * @apiVersion  1.0.0
-     * @api {post} /api/v1/users/logout to logout user.
-     *
-     * @apiParam {string} userId userId of the user. (auth headers) (required)
-     *
-     * @apiSuccess {object} myResponse shows error status, message, http status code, result.
-     * 
-     * @apiSuccessExample {object} Success-Response:
-         {
-            "error": false,
-            "message": "Logged Out Successfully",
-            "status": 200,
-            "data": null
+    app.put(`${baseUrl}/:userId/edit`, auth.isAuthenticated, userController.editUser);
 
-        }
-    */
+    app.post(`${baseUrl}/:userId/delete`, auth.isAuthenticated, userController.deleteUser);
 
-    // auth token params: userId.
-    app.post(`${baseUrl}/logout`, userController.logout);
+    
+
+    app.post(`${baseUrl}/logout`, auth.isAuthenticated, userController.logout);
 
 }
