@@ -9,8 +9,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/darkie8/chat-backend-test"
-  }
-  ,
+  },
   "author": "Sayantan",
   "license": "MIT",
   "dependencies": {
@@ -27,6 +26,7 @@
     "mongoose": "^5.2.13",
     "morgan": "^1.9.0",
     "pino": "^5.5.0",
+    "redis": "^2.8.0",
     "request": "^2.83.0",
     "shortid": "^2.2.8",
     "socket.io": "^2.1.1"

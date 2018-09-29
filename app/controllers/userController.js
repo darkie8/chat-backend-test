@@ -9,8 +9,9 @@ const passwordLib = require('./../libs/generatePasswordLib');
 const token = require('../libs/tokenLib')
 const callback = require('./../libs/controllerCallbackLib')
 /* Models */
+const ChatModel = mongoose.model('Chat')
 const UserModel = mongoose.model('User')
-const authModel = require('./../models/Auth')
+const AuthModel = mongoose.model('Auth')
 
 
 
