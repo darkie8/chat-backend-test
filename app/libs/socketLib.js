@@ -18,13 +18,13 @@ let setServer = (server) => {
 
     let io = socketio.listen(server);
 
-    let myIo = io.of('/')
+    let myIo = io.of('/chatSingle')
 
     myIo.on('connection', (socket) => {
 
         console.log("on connection--emitting verify user");
 
-        socket.emit("verifyUser", "");
+        socket.emit("verifyUser", "socket trying to verify user")
 
         // code to verify the user and make him online
 

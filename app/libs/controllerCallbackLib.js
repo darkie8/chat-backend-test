@@ -16,6 +16,13 @@ let crudCallback = (err, result, res, function1) => {
     } else if (function1 == 'editUser') {
         loggererr = 'editUser'
         msg = ['Failed To edit User', 'No User Found', 'User details edited']
+    } else if (function1 == 'getAllRoom') {
+        loggererr = 'getAllRoom'
+        msg = ['Failed To get rooms details', 'No Room Found', 'Rooms details found']
+
+    } else if (function1 == 'getSingleRoom') {
+        loggererr = 'getSingleRoom'
+        msg = ['Failed To get room details', 'No room Found', 'Room details found']
     } else {
         return
     }
@@ -29,7 +36,7 @@ let crudCallback = (err, result, res, function1) => {
         logger.error(msg[1], `User Controller: ${loggererr}`, 10)
         let apiResponse = response.generate(true, msg[1], 404, null)
         res.send(apiResponse)
-        
+
     } else {
         logger.info(msg[2], `User Controller: ${loggererr}`, 10)
         let apiResponse = response.generate(false, msg[2], 200, result)
@@ -38,5 +45,5 @@ let crudCallback = (err, result, res, function1) => {
 }
 
 module.exports = {
-    crudCallback : crudCallback
+    crudCallback: crudCallback
 }

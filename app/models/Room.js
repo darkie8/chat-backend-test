@@ -6,9 +6,13 @@ let chatRoom = new Schema({
         type: String,
         unique: true
     },
+    admin: {
+    type: Array,
+    default: []
+    },
     roomName: {
         type: String,
-        default: ''
+        default: 'buddy'
     },
     users: {
         type: Array,
@@ -16,11 +20,12 @@ let chatRoom = new Schema({
     },
     created: {
         type: String,
-        default: date.getLocalTime()
+        default: date.now()
     },
     updated: {
         type: String
     },
     population: Number
 })
-mongoose.model('chatRoom', chatRoom)
+mongoose.model('chatRoom_change', chatRoom)
+

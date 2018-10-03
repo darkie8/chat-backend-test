@@ -10,7 +10,7 @@ const token = require('../libs/tokenLib')
 const callback = require('./../libs/controllerCallbackLib')
 /* Models */
 const ChatModel = mongoose.model('Chat')
-const UserModel = mongoose.model('User')
+const UserModel = mongoose.model('User_change')
 const AuthModel = mongoose.model('Auth')
 
 

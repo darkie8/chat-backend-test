@@ -1,10 +1,11 @@
-'use strict'
+
 /**
  * Module Dependencies
  */
-const mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+ const Schema = mongoose.Schema;
 
+  const date = require('./../libs/timeLib')
 let userSchema = new Schema({
   userId: {
     type: String,
@@ -35,10 +36,13 @@ let userSchema = new Schema({
   createdOn :{
     type:Date,
     default:""
-  }
-
+  },
+rooms: {
+  type: Array,
+  default: ['buddy', 'buddy1']
+}
 
 })
 
 
-mongoose.model('User', userSchema);
+mongoose.model('User_change', userSchema);

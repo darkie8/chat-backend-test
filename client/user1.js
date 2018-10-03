@@ -1,9 +1,10 @@
 // connecting with sockets.
-const socket = io('http://localhost:3000');
+const socket = io('http://localhost:3000/chatSingle');
+const socketG = io('http://localhost:3000/groupChat');
 
 const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6InIxSGtjWEs5TSIsImlhdCI6MTUyMjI0ODE1Njc4MywiZXhwIjoxNTIyMzM0NTU2LCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7Im1vYmlsZU51bWJlciI6OTg3NDU4OTk2NiwiZW1haWwiOiJ4eXpAZ21haWwuY29tIiwibGFzdE5hbWUiOiJYeXoiLCJmaXJzdE5hbWUiOiJNciIsInVzZXJJZCI6IkgxcE9RR1k5TSJ9fQ.GJPmnMkOam1MHak9UA1iXF88VoIYjuKFhHud4qJdZDQ"
-const userId = "H1pOQGY9M"
 
+const userId = "H1pOQGY9M"
 let chatMessage = {
   createdOn: Date.now(),
   receiverId: 'SJ-iectqM',//putting user2's id here 
@@ -13,14 +14,34 @@ let chatMessage = {
 }
 
 let chatSocket = () => {
-
+// single
   socket.on('verifyUser', (data) => {
 
-    console.log("socket trying to verify user");
+    console.log(data);
 
     socket.emit("set-user", authToken);
 
   });
+
+// group 
+  socketG.on('verify', (data) => {
+
+    console.log(data);
+    socket.emit("token-verify",authToken)
+    socket.emit("set-groups", userId);
+
+  });
+  socketG.on('verify', (data) => {
+
+    console.log(data);
+    socket.emit("set-groups", userId);
+
+  });
+
+  socketG.on('verified-sending-roominfos', (rooms) =>{
+    console.log("Online roomlist is updated")
+    console.log(rooms)
+  })
 
   socket.on(userId, (data) => {
 

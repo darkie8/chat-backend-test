@@ -5,7 +5,7 @@ let now = () => moment().format();
 
 
 let getLocalTime = () => 
-moment(now).tz(timezone).format('MMMM Do YYYY, h:mm:ss');
+moment(now).tz(timeZone).format('MMMM Do YYYY, h:mm:ss');
 
 
 let convertToLocalTime = (time) =>  momenttz.tz(getLocalTime(), timezone).clone().tz(time).format('MMMM Do YYYY, h:mm:ss')

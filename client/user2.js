@@ -3,7 +3,7 @@ const socket = io('http://localhost:3000');
 
 const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6IkIxWXN4NXRxeiIsImlhdCI6MTUyMjI3NDQ2NDkwNSwiZXhwIjoxNTIyMzYwODY0LCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7Im1vYmlsZU51bWJlciI6OTg3NDU4OTk2NiwiZW1haWwiOiJzb21ldGhpbmdAZWR3aXNvci5jb20iLCJsYXN0TmFtZSI6Ikt1bWFyIiwiZmlyc3ROYW1lIjoiQWRpdHlhIiwidXNlcklkIjoiU0otaWVjdHFNIn19.0C2GL6kFuEp--EPFrxDL2qvP_Jc8UChNGEb6YNCcXKQ"
 const userId= "SJ-iectqM"
-
+const rooms = ['buddy','buddy1']
 let chatMessage = {
   createdOn: Date.now(),
   receiverId: 'H1pOQGY9M',//putting user2's id here 
