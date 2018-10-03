@@ -75,8 +75,9 @@ server.on('listening', onListening);
 
 // socket io connection handler 
 const socketLib = require("./app/libs/socketLib");
+const groupSocketLib = require("./app/libs/groupSocketLib")
 const socketServer = socketLib.setServer(server);
-
+const groupSocketServer = groupSocketLib.setServerGroup(server)
 
 // end socketio connection handler
 
